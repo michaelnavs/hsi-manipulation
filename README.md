@@ -62,11 +62,7 @@ show the spectral signature plot of a random pixel on the image.
    ```sh
    pip install -r requirements.txt
    ```
-6. cd in server
-   ```sh
-   cd server
+6. Run main script with desired pixel row and column value respectively
    ```
-7. Start development server
-   ```
-   python manage.py runserver
+   python main.py 1 2
    ```
