@@ -6,8 +6,10 @@ wavelength range of 460-530
 """
 import sys
 from spectral import open_image, imshow, get_rgb, BandInfo
+from scipy.stats import linregress
 import matplotlib
 import matplotlib.pyplot as plt
+from matplotlib.offsetbox import AnchoredText
 
 
 def main(row: int, col: int) -> None:
@@ -30,11 +32,19 @@ def main(row: int, col: int) -> None:
     # reduced pixel values to match the index of respective wavelength values
     pixel = [value for index, value in enumerate(pixel) if index in pixel_index]
 
+    # calculate slope of the graph
+    slope = linregress(reduced_wavelengths, pixel).slope
+
     # plot spectral signature
     fig, ax = plt.subplots()
     ax.plot(reduced_wavelengths, pixel)
     ax.set(xlabel="wavelengths", ylabel="reflectance", title=f"Pixel {row}x{col}")
     ax.grid()
+    at = AnchoredText(
+        f"Slope: {slope}", prop=dict(size=15), frameon=True, loc="upper left"
+    )
+    at.patch.set_boxstyle("round,pad=0.,rounding_size=0.2")
+    ax.add_artist(at)
     fig.savefig("plot.png")
     plt.show()
 
