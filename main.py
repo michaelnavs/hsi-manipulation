@@ -32,12 +32,16 @@ def main(row: int, col: int) -> None:
     # reduced pixel values to match the index of respective wavelength values
     pixel = [value for index, value in enumerate(pixel) if index in pixel_index]
 
-    # calculate slope of the graph
-    slope = linregress(reduced_wavelengths, pixel).slope
+    # get values for line of best fit
+    reg = linregress(reduced_wavelengths, pixel)
+    intercept = reg.intercept
+    slope = reg.slope
+    best_fit_y_vals = [intercept + slope * value for value in reduced_wavelengths]
 
     # plot spectral signature
     fig, ax = plt.subplots()
     ax.plot(reduced_wavelengths, pixel)
+    ax.plot(reduced_wavelengths, best_fit_y_vals)
     ax.set(xlabel="wavelengths", ylabel="reflectance", title=f"Pixel {row}x{col}")
     ax.grid()
     at = AnchoredText(
