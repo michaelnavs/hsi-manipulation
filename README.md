@@ -16,9 +16,12 @@
 
 <!-- Add demo here!! -->
 
-Part of my NSF Research work, I was tasked with creating a script to read and load HSI dataset.
-From there, my research advisor wanted me to show individual band images on the screen and
-show the spectral signature plot of a random pixel on the image.
+Part of my NSF Research work, I was tasked with creating a script to read and
+load HSI dataset. From there, my research advisor wanted me show the spectral
+signature plot of a random pixel on the image. Once I was able to plot the
+spectral signature of a random pixel, I was told to only plot the spectral signature
+between wavelengths of 460-530. After that, I calculated the slope and plotted
+the line of best fit for the data.
 
 ### Built With
 
@@ -48,7 +51,7 @@ show the spectral signature plot of a random pixel on the image.
 
 2. Clone the repo
    ```sh
-   git clone https://github.com/michaelnavs/hsi-manipulation.git
+   git clone https://github.com/michaelnavs/analyzing-hsi.git
    ```
 3. Create virtual environment
    ```sh
