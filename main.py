@@ -29,7 +29,7 @@ def reduce_dataset(wavelengths: List, wavelength_range: Tuple) -> Tuple[List, Li
 
 
 def main() -> None:
-    img = open_image("./images/first_data_2_12_2021.bil.hdr")
+    img = open_image("./dataset/first_data_2_12_2021.bil.hdr")
     rows, cols = img.shape[0], img.shape[1]
     wavelengths = img.bands.centers  # get wavelengths
     wavelength_range = (460, 530)  # store desired wavelength range values
