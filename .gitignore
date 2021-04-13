@@ -189,6 +189,7 @@ tags
 
 *.xlsx
 
-images/
+images/*.bil
+images/*.hdr
 
 *.docx
