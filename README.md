@@ -3,7 +3,7 @@
 <p align="center">
   <img src="./logo.png" alt="Logo" width="80">
 
-  <h3 align="center">HSI Manipulation</h3>
+  <h3 align="center">Analyzing HSI</h3>
 
   <p align="center">
       Learning to read and load HSI dataset
