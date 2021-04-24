@@ -8,10 +8,7 @@ import sys
 from typing import List, Tuple
 from spectral import open_image, imshow, get_rgb, BandInfo
 from scipy.stats import linregress
-import matplotlib
 import matplotlib.pyplot as plt
-from matplotlib.offsetbox import AnchoredText
-import pandas as pd
 
 
 def reduce_dataset(wavelengths: List, wavelength_range: Tuple) -> Tuple[List, List]:
@@ -34,7 +31,6 @@ def main() -> None:
     wavelengths = img.bands.centers  # get wavelengths
     wavelength_range = (460, 530)  # store desired wavelength range values
     reduced_wavelengths, pixel_indices = reduce_dataset(wavelengths, wavelength_range)
-    writer = pd.ExcelWriter("dataset.xlsx", engine="xlsxwriter")
 
     slopes = []
 
@@ -52,10 +48,7 @@ def main() -> None:
             row_slopes.append(slope)
         slopes.append(row_slopes)
 
-    slopes_df = pd.DataFrame(slopes)
-    slopes_df.to_excel(writer, sheet_name="data", index=False)
-
-    writer.save()
+    plt.matshow(slopes)
 
 
 if __name__ == "__main__":

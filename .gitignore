@@ -192,3 +192,5 @@ tags
 dataset/
 
 *.docx
+
+.DS_Store
