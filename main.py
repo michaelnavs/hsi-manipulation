@@ -1,9 +1,11 @@
 """
 Author: Michael Navarro
 
-This program will open a HSI file and display spectral signature of a pixel in 
-wavelength range of 460-530
+This program will open a HSI file and calculate the slope for each pixel's
+spectral signature between wavelength range of 460-530. Using those calculated
+slopes, the program will use matplotlib.pyplot.matshow to display a new image.
 """
+
 import sys
 from typing import List, Tuple
 from spectral import open_image, imshow, get_rgb, BandInfo
