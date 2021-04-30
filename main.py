@@ -9,6 +9,7 @@ from typing import List, Tuple
 from spectral import open_image, imshow, get_rgb, BandInfo
 from scipy.stats import linregress
 import matplotlib.pyplot as plt
+import numpy as np
 
 
 def reduce_dataset(wavelengths: List, wavelength_range: Tuple) -> Tuple[List, List]:
@@ -32,11 +33,10 @@ def main() -> None:
     wavelength_range = (460, 530)  # store desired wavelength range values
     reduced_wavelengths, pixel_indices = reduce_dataset(wavelengths, wavelength_range)
 
-    slopes = []
+    slopes = np.zeros((rows, cols))
 
     for row in range(rows):
         print(f"Working on row {row}")
-        row_slopes = []
         for col in range(cols):
             pixel = img.read_pixel(row, col)  # get reflectance values
             # reduced pixel values to match the index of respective wavelength values
@@ -45,10 +45,10 @@ def main() -> None:
             ]
             # calculate slope using scipy.stats.linregress
             slope = linregress(reduced_wavelengths, pixel).slope
-            row_slopes.append(slope)
-        slopes.append(row_slopes)
+            slopes[row, col] = slope
 
     plt.matshow(slopes)
+    plt.show()
 
 
 if __name__ == "__main__":
