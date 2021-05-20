@@ -194,3 +194,5 @@ dataset/
 *.docx
 
 .DS_Store
+
+.vscode
